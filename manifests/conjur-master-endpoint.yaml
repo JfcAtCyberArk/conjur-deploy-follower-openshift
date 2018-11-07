@@ -1,0 +1,14 @@
+kind: "Endpoints"
+apiVersion: "v1"
+metadata:
+  name: "conjur-master" 
+subsets: 
+- addresses:
+  - ip: {{ CONJUR_MASTER_IP }}
+  ports:
+  - name: "https"
+    port: 443
+  - name: "pg-main"
+    port: 5432
+  - name: "pg-audit"
+    port: 5433
