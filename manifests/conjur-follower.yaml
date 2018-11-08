@@ -43,13 +43,19 @@ spec:
           name: pg-main
         - containerPort: 5433
           name: pg-audit
-        readinessProbe:
-          exec:
-            command:
-              - /opt/init-conjur-follower.sh
+        lifecycle:
+          postStart:
+            exec:
+              command:
+                - /opt/init-conjur-follower.sh
+        livenessProbe:
           failureThreshold: 3
+          httpGet:
+            path: /health
+            port: 443
+            scheme: HTTPS
           initialDelaySeconds: 10
-          periodSeconds: 10
+          periodSeconds: 20
           successThreshold: 1
-          timeoutSeconds: 240
+          timeoutSeconds: 10
         resources: {}
