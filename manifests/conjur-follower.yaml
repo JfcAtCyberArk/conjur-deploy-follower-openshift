@@ -19,7 +19,6 @@ kind: DeploymentConfig
 metadata:
   name: conjur-follower
 spec:
-  serviceAccountName: conjur-cluster
   replicas: 1
   template:
     metadata:
@@ -28,6 +27,7 @@ spec:
         name: conjur-follower
         role: follower
     spec:
+      serviceAccountName: conjur-cluster
       containers:
       - name: conjur-appliance
         image: {{ CONJUR_APPLIANCE_IMAGE }}
