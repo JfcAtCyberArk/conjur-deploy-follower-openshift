@@ -11,9 +11,9 @@ CentOS 7
 60GB storage ( for default docker storage in /var/lib)
 
 ## Prereqs :
-Conjur follower docker image tarball should be copied to the conjur-follower image repository.
+Conjur EE docker image tarball and the follower seed should be copied to the build-follower-image repository.
 
-Conjur master IP address will be required and should be modified in the "1-create-master-service.sh" file.
+Variables should be set in vars.sh file .
 
 Ports used in services (in manifests repository) should be opened for communication between followers and the master.
 
